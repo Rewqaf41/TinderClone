@@ -1,8 +1,10 @@
+import { memo } from 'react'
+
 interface InfoBadgeProps {
 	onClick: () => void
 }
 
-export function InfoBadge({ onClick }: InfoBadgeProps) {
+function InfoBadgeComponent({ onClick }: InfoBadgeProps) {
 	return (
 		<button onClick={onClick} className='flex h-8 w-8 items-center justify-center'>
 			<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -14,3 +16,5 @@ export function InfoBadge({ onClick }: InfoBadgeProps) {
 		</button>
 	)
 }
+
+export const InfoBadge = memo(InfoBadgeComponent)

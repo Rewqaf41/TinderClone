@@ -8,7 +8,7 @@ export interface IProfile {
   distance?: number
 }
 
-export type TSwipeAction = 'like' | 'dislike' | 'superlike'
+export type TSwipeAction = 'rewind'| 'like' | 'dislike' | 'superlike' | 'boost'
 
 export interface ISwipeResult {
   profileId: string
