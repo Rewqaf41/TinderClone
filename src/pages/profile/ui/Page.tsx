@@ -5,9 +5,7 @@ import { VerifiedBadge } from '@/shared/ui'
 import { Avatar } from '@/shared/ui/Avatar'
 import { useState } from 'react'
 
-interface ProfilePageProps {}
-
-export function ProfilePage({}: ProfilePageProps) {
+export function ProfilePage() {
 	const { user } = useAuthStore()
 	const [modalOpen, setModalOpen] = useState(false)
 

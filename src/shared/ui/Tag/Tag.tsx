@@ -1,5 +1,5 @@
 import cn from 'clsx'
-import type { ReactNode } from 'react'
+import type { MouseEvent, ReactNode } from 'react'
 import { memo, useCallback } from 'react'
 
 interface TagProps {
@@ -22,7 +22,7 @@ function TagComponent({
 	className
 }: TagProps) {
 	const handleRemove = useCallback(
-		(e: React.MouseEvent<HTMLButtonElement>) => {
+		(e: MouseEvent<HTMLButtonElement>) => {
 			e.stopPropagation()
 			onRemove?.()
 		},

@@ -3,12 +3,12 @@ import { PhotoProgress } from '@/features/photos'
 import { ProfileInfo } from '@/features/profile'
 import { SwipeOverlay } from '@/features/swipe/ui/SwipeOwerlay'
 import { m, type PanInfo } from 'framer-motion'
-import { memo, useCallback, useRef, useState } from 'react'
+import { memo, useCallback, useRef, useState, type CSSProperties, type MouseEvent, type TouchEvent } from 'react'
 
 interface ProfileCardProps {
 	profile: IProfile
 	onSwipe: (action: TSwipeAction) => void
-	style?: React.CSSProperties
+	style?: CSSProperties
 	zIndex: number
 	index: number
 }
@@ -23,12 +23,12 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 	const startPosRef = useRef({ x: 0, y: 0 })
 
 	// Touch handlers
-	const handleTouchStart = useCallback((e: React.TouchEvent) => {
+	const handleTouchStart = useCallback((e: TouchEvent) => {
 		const touch = e.touches[0]
 		startPosRef.current = { x: touch.clientX, y: touch.clientY }
 	}, [])
 
-	const handleTouchMove = useCallback((e: React.TouchEvent) => {
+	const handleTouchMove = useCallback((e: TouchEvent) => {
 		const touch = e.touches[0]
 		const deltaX = touch.clientX - startPosRef.current.x
 		const deltaY = touch.clientY - startPosRef.current.y
@@ -49,7 +49,7 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 	}, [])
 
 	const handleTouchEnd = useCallback(
-		(e: React.TouchEvent) => {
+		(e: TouchEvent) => {
 			const touch = e.changedTouches[0]
 			const deltaX = touch.clientX - startPosRef.current.x
 			const deltaY = touch.clientY - startPosRef.current.y
@@ -64,9 +64,8 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 		[onSwipe]
 	)
 
-	// Mouse handlers
 	const handleMouseDown = useCallback(
-		(e: React.MouseEvent) => {
+		(e: MouseEvent) => {
 			if (index !== 0) return
 			startPosRef.current = { x: e.clientX, y: e.clientY }
 			setIsDragging(true)
@@ -75,7 +74,7 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 	)
 
 	const handleMouseMove = useCallback(
-		(e: React.MouseEvent) => {
+		(e: MouseEvent) => {
 			if (!isDragging) return
 
 			const deltaX = e.clientX - startPosRef.current.x
@@ -99,7 +98,7 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 	)
 
 	const handleMouseUp = useCallback(
-		(e: React.MouseEvent) => {
+		(e: MouseEvent) => {
 			if (!isDragging) return
 
 			const deltaX = e.clientX - startPosRef.current.x
@@ -117,7 +116,7 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 	)
 
 	const handlePhotoClick = useCallback(
-		(e: React.MouseEvent) => {
+		(e: MouseEvent) => {
 			if (index !== 0 || isDragging) return
 			const card = cardRef.current
 			if (!card) return
@@ -132,7 +131,7 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 	)
 
 	const handleDragEnd = useCallback(
-		(_: any, info: PanInfo) => {
+		(_: unknown, info: PanInfo) => {
 			const { offset } = info
 			const absX = Math.abs(offset.x)
 			const absY = Math.abs(offset.y)

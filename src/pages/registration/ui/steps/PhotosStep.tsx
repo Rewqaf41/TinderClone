@@ -3,7 +3,7 @@ import { PhotoGrid, PreviewCard, SmartPhotosToggle } from '@/features/photos/'
 import { MAX_PHOTOS } from '@/shared/constants/constants'
 import { ROUTES } from '@/shared/constants/routes'
 import { Button } from '@/shared/ui'
-import { useState } from 'react'
+import { useState, type ChangeEvent, type DragEvent } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export const PhotosStep = () => {
@@ -14,7 +14,7 @@ export const PhotosStep = () => {
 	const [activeTab, setActiveTab] = useState<'edit' | 'preview'>('edit')
 	const [smartPhotos, setSmartPhotos] = useState(false)
 
-	const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleFileSelect = (e: ChangeEvent<HTMLInputElement>) => {
 		const files = Array.from(e.target.files || [])
 		handleFiles(files)
 	}
@@ -39,7 +39,7 @@ export const PhotosStep = () => {
 		setPhotos(photos.filter((_, i) => i !== index))
 	}
 
-	const handleDrop = (e: React.DragEvent) => {
+	const handleDrop = (e: DragEvent) => {
 		e.preventDefault()
 		setIsDragging(false)
 		const files = Array.from(e.dataTransfer.files)
