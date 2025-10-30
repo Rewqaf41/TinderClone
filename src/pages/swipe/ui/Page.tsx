@@ -10,7 +10,6 @@ export function SwipePage() {
 	const { profiles, isLoading, checkAndFetchMore } = useSwipeQueue()
 	const { addToHistory, getLastProfile, removeLastFromHistory, canRewind } = useSwipeHistory()
 	const swipeMutation = useSwipeProfile()
-
 	const [currentProfiles, setCurrentProfiles] = useState(profiles.slice(0, 2))
 
 	useEffect(() => {
@@ -24,7 +23,6 @@ export function SwipePage() {
 	const handleSwipe = async (action: TSwipeAction) => {
 		if (action === 'rewind') {
 			if (!canRewind) return
-
 			const prevProfile = getLastProfile()
 			setCurrentProfiles(prev => [prevProfile, ...prev])
 			removeLastFromHistory()
@@ -49,7 +47,6 @@ export function SwipePage() {
 				const nextProfiles = profiles.slice(newProfiles.length, newProfiles.length + 2)
 				return [...newProfiles, ...nextProfiles].slice(0, 2)
 			})
-
 			checkAndFetchMore()
 		}, 100)
 	}
@@ -68,7 +65,7 @@ export function SwipePage() {
 	}
 
 	return (
-		<div className='mx-auto flex w-full max-w-md flex-col' style={{ height: `calc(100vh - 48px)` }}>
+		<div className='mx-auto flex w-full max-w-md flex-col' style={{ height: `calc(100dvh - 48px)` }}>
 			<div className='relative flex-1 overflow-hidden'>
 				<AnimatePresence mode='wait' initial={false}>
 					{currentProfiles.map((profile, idx) => (
@@ -86,7 +83,6 @@ export function SwipePage() {
 					))}
 				</AnimatePresence>
 			</div>
-
 			<ActionButtons onAction={handleSwipe} />
 		</div>
 	)
