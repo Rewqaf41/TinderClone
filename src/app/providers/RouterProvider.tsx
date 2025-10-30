@@ -28,6 +28,10 @@ const router = createBrowserRouter([
 				element: <ProfilePage />
 			}
 		]
+	},
+	{
+		path: '*',
+		element: <h1 className='flex items-center justify-center text-5xl'>404</h1>
 	}
 ])
 
