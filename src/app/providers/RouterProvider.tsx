@@ -1,10 +1,10 @@
+import { ProfilePage } from '@/pages/profile'
 import { RegistrationPage } from '@/pages/registration'
 import { SwipePage } from '@/pages/swipe'
 import { WelcomePage } from '@/pages/welcome'
 import { ROUTES } from '@/shared/constants/routes'
 import { createBrowserRouter, RouterProvider as Provider } from 'react-router-dom'
 import { MainLayout } from '../layouts/MainLayout'
-import { ProtectedRoute } from '../layouts/ProtectedRoute'
 
 const router = createBrowserRouter([
 	{
@@ -21,11 +21,11 @@ const router = createBrowserRouter([
 		children: [
 			{
 				path: ROUTES.SWIPE,
-				element: (
-					<ProtectedRoute>
-						<SwipePage />
-					</ProtectedRoute>
-				)
+				element: <SwipePage />
+			},
+			{
+				path: ROUTES.PROFILE,
+				element: <ProfilePage />
 			}
 		]
 	}
