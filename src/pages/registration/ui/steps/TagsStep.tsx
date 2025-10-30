@@ -30,23 +30,9 @@ export const TagsStep = () => {
 	}
 
 	return (
-		<div
-			className='relative flex min-h-screen flex-col bg-[#0E0E10] text-white'
-			style={{
-				position: 'relative',
-				height: '100%',
-				overflow: 'hidden'
-			}}
-		>
+		<div className='relative flex min-h-screen flex-col overflow-hidden bg-[#0E0E10] text-white'>
 			<ProgressBar currentStep={2} totalSteps={3} />
-
-			<div
-				className='border-border fixed top-0 left-0 z-100 w-full border-b bg-[#0E0E10] px-6 pt-6 pb-4'
-				style={{
-					position: 'fixed',
-					maxWidth: 'var(--max-mobile-width)'
-				}}
-			>
+			<div className='border-border fixed top-2 left-1/2 z-50 w-full max-w-(--max-mobile-width) -translate-x-1/2 border-b bg-[#0E0E10] px-6 pt-6 pb-4'>
 				<div className='mb-4 flex items-center justify-between'>
 					<button onClick={handleBack}>
 						<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -67,14 +53,7 @@ export const TagsStep = () => {
 				</p>
 			</div>
 
-			<div
-				className='flex-1 px-6 pt-[210px] pb-32'
-				style={{
-					overflowY: 'auto',
-					WebkitOverflowScrolling: 'touch',
-					height: '100%'
-				}}
-			>
+			<div className='flex-1 overflow-y-auto px-6 pt-[200px] pb-28 [-webkit-overflow-scrolling:touch]'>
 				<div className='flex flex-wrap justify-center gap-2'>
 					{POPULAR_TAGS.map(tag => (
 						<button
@@ -92,13 +71,7 @@ export const TagsStep = () => {
 				</div>
 			</div>
 
-			<div
-				className='border-border fixed bottom-0 left-0 w-full border-t bg-[#0E0E10] px-5 pt-4 pb-6'
-				style={{
-					position: 'fixed',
-					maxWidth: 'var(--max-mobile-width)'
-				}}
-			>
+			<div className='border-border fixed bottom-0 left-1/2 w-full max-w-(--max-mobile-width) -translate-x-1/2 border-t bg-[#0E0E10] px-5 pt-4 pb-6'>
 				<Button
 					variant='primary'
 					onClick={handleNext}
