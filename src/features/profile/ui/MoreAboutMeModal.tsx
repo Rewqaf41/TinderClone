@@ -31,7 +31,7 @@ export function MoreAboutMeModal({ open, onClose }: MoreAboutMeModalProps) {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
-					className='bg-opacity-50 fixed inset-0 left-1/2 z-50 flex max-w-(--max-mobile-width) -translate-x-1/2 items-end justify-center bg-black'
+					className='bg-opacity-50 fixed inset-0 left-1/2 z-50 flex max-w-(--max-mobile-width) -translate-x-1/2 items-end justify-center bg-black pb-12'
 					onClick={onClose}
 				>
 					<m.div
