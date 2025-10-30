@@ -11,7 +11,7 @@
     "preview": "vite preview",
     "prepare": "husky install"
   },
-   "lint-staged": {
+  "lint-staged": {
     "*.{js,ts,jsx,tsx}": [
       "eslint --fix",
       "prettier --write"
