@@ -40,7 +40,7 @@ export function TinderPlatinumSlider() {
 	return (
 		<div
 			{...handlers}
-			className='before:bg-background fixed bottom-12 left-0 z-20 flex h-[45vh] w-full flex-col justify-end overflow-hidden bg-black text-white select-none before:absolute before:top-0 before:left-0 before:h-20 before:w-full before:rounded-b-[50%]'
+			className='before:bg-background fixed bottom-12 left-1/2 z-20 flex h-[45vh] w-full max-w-(--max-mobile-width) -translate-x-1/2 flex-col justify-end overflow-hidden bg-black text-white select-none before:absolute before:top-0 before:left-0 before:h-20 before:w-full before:rounded-b-[50%]'
 		>
 			<div className='relative z-10 px-6 pb-20 text-center'>
 				<h2 className='mb-2 text-[18px] font-semibold'>{SLIDES[currentSlide].title}</h2>
