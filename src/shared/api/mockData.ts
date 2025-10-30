@@ -22,7 +22,7 @@ const bios = [
 ]
 
 const generatePhotoUrl = (seed: number, index: number): string => {
-  return `https://picsum.photos/seed/${seed + index}/400/600`
+  return `https://placehold.co/400x600?text=Image+${seed + index}`
 }
 
 // Генерация случайного профиля
