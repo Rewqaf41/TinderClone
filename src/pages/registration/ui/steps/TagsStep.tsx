@@ -5,7 +5,6 @@ import { useState } from 'react'
 
 export const TagsStep = () => {
 	const { registrationData, updateRegistrationData, setRegistrationStep } = useAuthStore()
-
 	const [selectedTags, setSelectedTags] = useState<string[]>(registrationData.tags || [])
 
 	const handleTagToggle = (tag: string) => {
@@ -26,16 +25,28 @@ export const TagsStep = () => {
 	}
 
 	const handleSkip = () => {
-		// Сохраняем пустой список тегов и переходим к следующему шагу
 		updateRegistrationData({ tags: [] })
 		setRegistrationStep(REGISTRATION_STEPS.PHOTOS)
 	}
 
 	return (
-		<div className='relative flex min-h-screen flex-col bg-[#0E0E10] text-white'>
+		<div
+			className='relative flex min-h-screen flex-col bg-[#0E0E10] text-white'
+			style={{
+				position: 'relative',
+				height: '100%',
+				overflow: 'hidden'
+			}}
+		>
 			<ProgressBar currentStep={2} totalSteps={3} />
 
-			<div className='border-border fixed top-0 left-0 z-20 w-full border-b bg-[#0E0E10] px-6 pt-6 pb-4'>
+			<div
+				className='border-border fixed top-0 left-0 z-100 w-full border-b bg-[#0E0E10] px-6 pt-6 pb-4'
+				style={{
+					position: 'fixed',
+					maxWidth: 'var(--max-mobile-width)'
+				}}
+			>
 				<div className='mb-4 flex items-center justify-between'>
 					<button onClick={handleBack}>
 						<svg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -56,7 +67,14 @@ export const TagsStep = () => {
 				</p>
 			</div>
 
-			<div className='flex-1 overflow-y-auto px-6 pt-[210px] pb-32'>
+			<div
+				className='flex-1 px-6 pt-[210px] pb-32'
+				style={{
+					overflowY: 'auto',
+					WebkitOverflowScrolling: 'touch',
+					height: '100%'
+				}}
+			>
 				<div className='flex flex-wrap justify-center gap-2'>
 					{POPULAR_TAGS.map(tag => (
 						<button
@@ -74,7 +92,13 @@ export const TagsStep = () => {
 				</div>
 			</div>
 
-			<div className='border-border fixed bottom-0 left-0 w-full border-t bg-[#0E0E10] px-5 pt-4 pb-6'>
+			<div
+				className='border-border fixed bottom-0 left-0 w-full border-t bg-[#0E0E10] px-5 pt-4 pb-6'
+				style={{
+					position: 'fixed',
+					maxWidth: 'var(--max-mobile-width)'
+				}}
+			>
 				<Button
 					variant='primary'
 					onClick={handleNext}
