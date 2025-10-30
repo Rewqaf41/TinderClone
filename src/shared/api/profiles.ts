@@ -3,22 +3,32 @@ import { mockProfiles } from './mockData'
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 
-export const getProfiles = async (): Promise<IProfile[]> => {
-  await delay(800)
-  return mockProfiles
+export interface SwipeResponse {
+	success: boolean
+	match?: boolean
+	matchedProfile?: IProfile
 }
 
-export const getProfile = async (id: string): Promise<IProfile | null> => {
-  await delay(300)
-  const profile = mockProfiles.find(p => p.id === id)
-  return profile || null
-}
+export const profilesApi = {
+	getProfiles: async (limit = 10, offset = 0): Promise<IProfile[]> => {
+		await delay(800)
+		return mockProfiles.slice(offset, offset + limit)
+	},
 
-export const swipeProfile = async (
-  profileId: string,
-  action: 'like' | 'dislike' | 'superlike'
-): Promise<{ success: boolean; match?: boolean }> => {
-  await delay(200)
-  const isMatch = action === 'like' && Math.random() < 0.1
-  return { success: true, match: isMatch }
+	getProfile: async (id: string): Promise<IProfile | null> => {
+		await delay(300)
+		return mockProfiles.find(p => p.id === id) || null
+	},
+
+	swipeProfile: async (profileId: string, action: 'like' | 'dislike' | 'superlike'): Promise<SwipeResponse> => {
+		await delay(200)
+		const isMatch = action === 'like' && Math.random() < 0.15
+
+		if (isMatch) {
+			const matchedProfile = mockProfiles.find(p => p.id === profileId)
+			return { success: true, match: true, matchedProfile }
+		}
+
+		return { success: true, match: false }
+	}
 }
