@@ -149,7 +149,7 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 	return (
 		<m.div
 			ref={cardRef}
-			className='absolute inset-0 cursor-grab overflow-hidden rounded-2xl pt-2 shadow-2xl select-none'
+			className='absolute inset-0 cursor-grab overflow-hidden rounded-b-2xl pt-2 shadow-2xl select-none'
 			style={{ ...style, zIndex }}
 			drag={index === 0}
 			dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
