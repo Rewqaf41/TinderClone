@@ -63,14 +63,12 @@ body {
 html,
 body {
 	height: 100dvh;
-	overflow: hidden;
 }
 
 #root {
 	width: 100%;
 	max-width: var(--max-mobile-width);
 	height: 100dvh;
-	overflow: hidden;
 	background: var(--color-background);
 	margin: 0 auto;
 	box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
@@ -79,7 +77,6 @@ body {
 
 #root [style*='position: fixed'],
 #root .fixed {
-	position: absolute !important;
 	max-width: var(--max-mobile-width);
 }
 
