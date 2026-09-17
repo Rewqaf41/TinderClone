@@ -1,1 +1,1 @@
-export { ProfileCard } from "./ui/ProfileCard.tsx"
+export { ProfileCard } from './ui/ProfileCard.tsx'
