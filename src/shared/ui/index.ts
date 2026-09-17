@@ -4,4 +4,3 @@ export * from './Input'
 export * from './Progress'
 export * from './Switch'
 export * from './Tag'
-

@@ -1,1 +1,1 @@
-export type { IProfile, ISwipeResult, TSwipeAction } from "./model/types"
+export type { IProfile, ISwipeResult, TSwipeAction } from './model/types'

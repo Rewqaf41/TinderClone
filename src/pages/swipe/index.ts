@@ -1,1 +1,1 @@
-export { SwipePage } from "./ui/Page"
+export { SwipePage } from './ui/Page'

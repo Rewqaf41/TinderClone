@@ -1,5 +1,4 @@
 import { Tag } from '@/shared/ui/Tag'
-import { AnimatePresence, m } from 'framer-motion'
 import { useState } from 'react'
 import { useSwipeable } from 'react-swipeable'
 import { communicationStyles, loveLanguages, personalityTypes } from '../model/moreAboutMeModal.data'
@@ -25,21 +24,14 @@ export function MoreAboutMeModal({ open, onClose }: MoreAboutMeModalProps) {
 	})
 
 	return (
-		<AnimatePresence>
+		<>
 			{open && (
-				<m.div
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					exit={{ opacity: 0 }}
+				<div
 					className='bg-opacity-50 fixed inset-0 left-1/2 z-50 flex w-full max-w-(--max-mobile-width) -translate-x-1/2 items-end justify-center bg-black pb-12'
 					onClick={onClose}
 				>
-					<m.div
+					<div
 						{...handlers}
-						initial={{ y: '100%' }}
-						animate={{ y: 0 }}
-						exit={{ y: '100%' }}
-						transition={{ type: 'tween', duration: 0.3 }}
 						className='flex max-h-[90vh] w-full max-w-md flex-col overflow-hidden rounded-t-3xl bg-[#1a1a1a] text-white'
 						onClick={e => e.stopPropagation()}
 					>
@@ -178,9 +170,9 @@ export function MoreAboutMeModal({ open, onClose }: MoreAboutMeModalProps) {
 								</div>
 							</div>
 						</div>
-					</m.div>
-				</m.div>
+					</div>
+				</div>
 			)}
-		</AnimatePresence>
+		</>
 	)
 }

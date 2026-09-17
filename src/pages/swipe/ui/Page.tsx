@@ -3,7 +3,6 @@ import { useSwipeHistory, useSwipeQueue } from '@/features/swipe'
 import { useSwipeProfile } from '@/features/swipe/model/useProfiles'
 import { ActionButtons } from '@/widgets/ProfileAction'
 import { ProfileCard } from '@/widgets/ProfileCard'
-import { AnimatePresence } from 'framer-motion'
 import { useEffect, useState } from 'react'
 
 export function SwipePage() {
@@ -67,7 +66,7 @@ export function SwipePage() {
 	return (
 		<div className='mx-auto flex w-full max-w-md flex-col' style={{ height: `calc(100dvh - 48px)` }}>
 			<div className='relative flex-1 overflow-hidden'>
-				<AnimatePresence mode='wait' initial={false}>
+				<>
 					{currentProfiles.map((profile, idx) => (
 						<ProfileCard
 							key={profile.id}
@@ -81,7 +80,7 @@ export function SwipePage() {
 							}}
 						/>
 					))}
-				</AnimatePresence>
+				</>
 			</div>
 			<ActionButtons onAction={handleSwipe} />
 		</div>

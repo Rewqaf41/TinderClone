@@ -2,7 +2,6 @@ import type { IProfile, TSwipeAction } from '@/entities/profile'
 import { PhotoProgress } from '@/features/photos'
 import { ProfileInfo } from '@/features/profile'
 import { SwipeOverlay } from '@/features/swipe/ui/SwipeOwerlay'
-import { m, type PanInfo } from 'framer-motion'
 import { memo, useCallback, useRef, useState, type CSSProperties, type MouseEvent, type TouchEvent } from 'react'
 
 interface ProfileCardProps {
@@ -130,32 +129,11 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 		[index, profile.photos.length, isDragging]
 	)
 
-	const handleDragEnd = useCallback(
-		(_: unknown, info: PanInfo) => {
-			const { offset } = info
-			const absX = Math.abs(offset.x)
-			const absY = Math.abs(offset.y)
-
-			if (absY > absX && offset.y < -150) onSwipe('superlike')
-			else if (offset.x > 150) onSwipe('like')
-			else if (offset.x < -150) onSwipe('dislike')
-		},
-		[onSwipe]
-	)
-
-	const exitX = swipeDirection === 'right' ? 1000 : swipeDirection === 'left' ? -1000 : 0
-	const exitY = swipeDirection === 'up' ? -1000 : 0
-
 	return (
-		<m.div
+		<div
 			ref={cardRef}
 			className='absolute inset-0 cursor-grab overflow-hidden rounded-b-2xl pt-2 shadow-2xl select-none'
 			style={{ ...style, zIndex }}
-			drag={index === 0}
-			dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-			dragElastic={0.7}
-			onDragEnd={handleDragEnd}
-			whileTap={{ cursor: 'grabbing' }}
 			onTouchStart={handleTouchStart}
 			onTouchMove={handleTouchMove}
 			onTouchEnd={handleTouchEnd}
@@ -163,12 +141,6 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 			onMouseMove={handleMouseMove}
 			onMouseUp={handleMouseUp}
 			onMouseLeave={handleMouseUp}
-			exit={{
-				x: exitX,
-				y: exitY,
-				opacity: 0,
-				transition: { duration: 0.3 }
-			}}
 		>
 			<div className='relative h-full w-full' onClick={handlePhotoClick}>
 				<img
@@ -188,7 +160,7 @@ function ProfileCardComponent({ profile, onSwipe, style, zIndex, index }: Profil
 					</div>
 				</div>
 			</div>
-		</m.div>
+		</div>
 	)
 }
 

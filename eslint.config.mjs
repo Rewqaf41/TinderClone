@@ -7,28 +7,28 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 
 export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    languageOptions: {
-      parser: tsParser,
-      parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: { jsx: true },
-      },
-      globals: globals.browser,
-    },
-    plugins: {
-      '@typescript-eslint': tsPlugin,
-      'react-hooks': reactHooksPlugin,
-      'react-refresh': reactRefreshPlugin,
-    },
-    rules: {
-      ...tsPlugin.configs.recommended.rules,
-      ...reactHooksPlugin.configs['recommended-latest'].rules,
-      ...reactRefreshPlugin.configs.vite.rules,
-    },
-    extends: [js.configs.recommended],
-  },
+	globalIgnores(['dist']),
+	{
+		files: ['**/*.{ts,tsx}'],
+		languageOptions: {
+			parser: tsParser,
+			parserOptions: {
+				ecmaVersion: 2020,
+				sourceType: 'module',
+				ecmaFeatures: { jsx: true }
+			},
+			globals: globals.browser
+		},
+		plugins: {
+			'@typescript-eslint': tsPlugin,
+			'react-hooks': reactHooksPlugin,
+			'react-refresh': reactRefreshPlugin
+		},
+		rules: {
+			...tsPlugin.configs.recommended.rules,
+			...reactHooksPlugin.configs['recommended-latest'].rules,
+			...reactRefreshPlugin.configs.vite.rules
+		},
+		extends: [js.configs.recommended]
+	}
 ])
